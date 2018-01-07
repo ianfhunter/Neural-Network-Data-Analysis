@@ -27,20 +27,30 @@ def importance_split(x, label, n, maxX, minX):
 
     return vals
 
+def minimizeloss_split(x, label, n, maxX, minX):
+    print(x.shape)
+    vals = []
+    quit()
+
+
 # Split Enums
 from enum import Enum
 class SplitType(Enum):
-    Regular = 1
-    Importance = 2
+    Regular = 1         # Regular Intervals
+    Importance = 2      # Prioritize Extreme Positives
+    MinimizeLoss = 3   # Prioritize minimal loss figure
+    
 
 split_fns = {
     SplitType.Regular: regular_split,
     SplitType.Importance: importance_split,
+    SplitType.MinimizeLoss: minimizeloss_split,
 }
 
 dirs = {
     SplitType.Regular: "regular",
     SplitType.Importance: "importance",
+    SplitType.MinimizeLoss: "minimizeLoss",
 }
 
 def split(x, label, directory, args):
